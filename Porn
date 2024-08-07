@@ -1,7 +1,7 @@
---- Ouwigahara Mobile Support
+--- Ouwigahara Mobile
 
 --------------------------------------------------------------------------------------------
--- IMPEROR'S Porn HUB PREMIUM | PROJECT SLAYERS | OUWIGAHARA
+-- Vừa Sục Vừa Treo | OUWIGAHARA
 --------------------------------------------------------------------------------------------
 --- ANTI AFK?
 repeat wait() until game:IsLoaded()
@@ -441,7 +441,7 @@ local WebhookURL = ""
 
 
 	FarmSection:AddToggle({
-		Name = "Auto Farm Dungeon (No Need To Turn ON Kill Aura)",
+		Name = "Auto Farm Dungeon (Bật Kill Aura Văng Game Chết Mẹ Mày luôn)",
 		Default = false,
 		Callback = function(value)
 			getgenv().AllBosses = value
@@ -494,7 +494,7 @@ local WebhookURL = ""
 	})
 
     FarmSection:AddToggle({
-        Name = "Global Kill Aura Bypass (ARROW)",
+        Name = "Kill Aura Bypass (ARROW)",
         Default = false,
         Callback = function(value)
             local firing = value -- Update the firing state based on the toggle value
@@ -510,7 +510,7 @@ local WebhookURL = ""
     })
 
     FarmSection:AddToggle({
-        Name = "Global Kill Aura (ARROW) [SLOW]",
+        Name = "Kill Aura (ARROW) [Chậm]",
         Default = false,
         Callback = function(state)
             local running = state -- Update the running state
@@ -540,7 +540,7 @@ local WebhookURL = ""
 local running = false -- Variable to track the state
 
 FarmSection:AddToggle({
-    Name = "Global Kill Aura (ARROW) [SAFEST]",
+    Name = "Kill Aura (ARROW) [Vừa Đủ Nhanh]",
     Default = false,
     Callback = function(state)
         running = state -- Update the running state
@@ -599,7 +599,7 @@ FarmSection:AddToggle({
 
 getgenv().Method = "Sword"
 FarmSection:AddDropdown({
-    Name = "Kill Aura Method",
+    Name = "Kill Aura (Chọn Loại Cần Farm Lên Mast)",
     Default = "Sword",
     Options = {"Sword", "Combat", "Claw", "Scythe", "Fans"},
     Save = true,
@@ -611,7 +611,7 @@ FarmSection:AddDropdown({
 
 getgenv().FarmMethod = "Above"
 FarmSection:AddDropdown({
-    Name = "Farm Method",
+    Name = "Farm Method (Chọn Kiểu Farm)",
     Default = "Above",
     Options = {"Above", "Below", "Behind", "Front"},
     Save = true,
@@ -622,7 +622,7 @@ FarmSection:AddDropdown({
 })
 local TweenSpeedSlider = FarmSection:AddSlider({
     Name = "Tween Speed",
-    Min = 100,
+    Min = 200,
     Max = 1000,
     Default = 100,
     Color = Color3.fromRGB(255, 255, 255),
@@ -636,28 +636,28 @@ local TweenSpeedSlider = FarmSection:AddSlider({
 })
 
 local function AddSpeed()
-    local currentSpeed = getgenv().TweenSpeed or 100
-    local newSpeed = math.clamp(currentSpeed + 10, 100, 400)
+    local currentSpeed = getgenv().TweenSpeed or 200
+    local newSpeed = math.clamp(currentSpeed + 50, 100, 400)
     getgenv().TweenSpeed = newSpeed
     TweenSpeedSlider:SetValue(newSpeed)
 end
 
 local function LessenSpeed()
-    local currentSpeed = getgenv().TweenSpeed or 100
-    local newSpeed = math.clamp(currentSpeed - 10, 100, 400)
+    local currentSpeed = getgenv().TweenSpeed or 200
+    local newSpeed = math.clamp(currentSpeed - 50, 100, 400)
     getgenv().TweenSpeed = newSpeed
     TweenSpeedSlider:SetValue(newSpeed)
 end
 
 FarmSection:AddButton({
-    Name = "Add +10 TweenSpeed",
+    Name = "Add +50 TweenSpeed",
     Callback = function()
         AddSpeed()
     end
 })
 
 FarmSection:AddButton({
-    Name = "Lessen -10 TweenSpeed",
+    Name = "Lessen -50 TweenSpeed",
     Callback = function()
         LessenSpeed()
     end
@@ -668,14 +668,14 @@ FarmSection:AddSlider({
 Name = "Farm Distance",
 Min = 1,
 Max = 30,
-Default = 5,
+Default = 10,
 Color = Color3.fromRGB(255,255,255),
 Increment = 1,
 ValueName = "Farm Distance",
 Save = true,
 Flag = "farm_distance",
 Callback = function(self)
-    getgenv().Distance = 5
+    getgenv().Distance = 10
     getgenv().Distance = self
 end    
 })
@@ -690,7 +690,7 @@ local textbox = FarmSection:AddTextbox({
 })
 
 	FarmSection:AddToggle({
-		Name = "Auto Collect Chest (DOES NOT Removes Chest After Collect)",
+		Name = "Auto Collect Chest (Không Xoá Rương Sau Khi Nhận Đồ)",
 		Default = false,
         Save = true,
         Flag = "auto_collect_chest",
@@ -700,7 +700,7 @@ local textbox = FarmSection:AddTextbox({
 	})
 
     FarmSection:AddToggle({
-		Name = "Auto Collect Chest v2 (Removes Chest After Collect)",
+		Name = "Auto Collect Chest v2 (Xoá Rương Sau Khi Nhận Đồ)",
 		Default = false,
         Save = true,
         Flag = "auto_collect_chest",
@@ -710,7 +710,7 @@ local textbox = FarmSection:AddTextbox({
 	})
 
 FarmSection:AddToggle({
-        Name = "Auto Collect Chest v3 [FOR WEBHOOK] [BETA]",
+        Name = "Auto Collect Chest v3 [Dành Cho WEBHOOK] [BETA]",
         Default = false,
         Save = true,
         Flag = "auto_collect_chest3",
@@ -720,7 +720,7 @@ FarmSection:AddToggle({
 })
 
 	FarmSection:AddToggle({
-		Name = "Auto Block [No Skills]",
+		Name = "Auto Đỡ Khiên [Bật Lên Sẽ Không Dùng Được Skill]",
 		Default = false,
         Save = true,
         Flag = "auto_block",
@@ -730,7 +730,7 @@ FarmSection:AddToggle({
 	})
 
     FarmSection:AddButton({
-        Name = "RESET (Teleport to Void)",
+        Name = "RESET (Dịch Chuyển Xuống Lồng Đất)",
         Callback = function()
             DieInVoid()
           end    
@@ -2230,7 +2230,7 @@ local textbox = CreditsTab:AddTextbox({
     end
 })
 
-    CreditsSection:AddLabel("ImperorLegend // LUA coding kiddie")
+    CreditsSection:AddLabel("Nguyễn Quốc Pháp:333")
 
 -- // FARM METHOD
 spawn(function()
